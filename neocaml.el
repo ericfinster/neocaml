@@ -92,6 +92,15 @@ See also `neocaml-prettify-symbols-alist'."
   :group 'neocaml
   :package-version '(neocaml . "0.0.1"))
 
+(defgroup neocaml-faces nil
+  "Special faces for the neocaml mode."
+  :group 'neocaml)
+
+(defface neocaml-font-lock-constructor-face
+  '((t (:foreground "OrangeRed")))        
+  "Face description for constructors of (polymorphic) variants and exceptions."
+  :group 'neocaml-faces)
+
 (defvar neocaml--debug nil
   "Enables debugging messages, shows current node in mode-line.
 Set it to t to show indentation debug info and to 'font-lock
@@ -214,7 +223,7 @@ List taken directly from https://github.com/tree-sitter/tree-sitter-ocaml/blob/m
      (method_specification (method_name) @font-lock-function-name-face)
      ;; patterns containing bound variables
      (value_pattern) @font-lock-variable-name-face
-     (constructor_pattern pattern: (value_name) @font-lock-variable-name-face)
+     (constructor_pattern pattern: (value_name) @neocaml-font-lock-constructor-face)
      (tuple_pattern (value_name) @font-lock-variable-name-face)
      ;; punned record fields in patterns
      (field_pattern (field_path (field_name) @font-lock-variable-name-face) :anchor)
